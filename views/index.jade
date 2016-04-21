@@ -1,5 +1,119 @@
 extends layout
 
 block content
-  h1= title
-  p Welcome to #{title}
+  section#header
+    .container
+      .row
+        .col-sm-4
+          p Гостевой дом в частном секторе
+        .col-sm-4.text-center
+          p Ейск, Краснофлотская, 40
+        .col-sm-4.text-right
+          p
+            a(href="tel:+79615824006") +7 961 582 40 06
+            br
+            a(href="tel:+79181874638") +7 918 187 46 38
+            br
+            a(href="tel:88613235248") 8 861 32 3 52 48
+      .center-wrap
+        .center.text-center
+          h1 Недорогой летний отдых в гостевом доме
+            br
+            | на берегу Азовского моря (Ейск)
+    a.go(href="#features")
+      span.glyphicon.glyphicon-chevron-down
+
+  section#features
+    .container
+      .center-wrap
+        .center
+          .row
+            .col-sm-6
+              ul
+                li Уютный частный дом с радушными хозяевами
+                li 200 метров до моря, 10 минут до городского пляжа
+                li Комнаты со всеми удобствами и интернетом
+            .col-sm-6
+                h3 Хотите получить подробную информацию?
+                form
+                  .row
+                    .col-sm-8.col-sm-offset-2
+                      .form-group
+                        label Имя
+                        input.form-control(type="text")
+                      .form-group
+                        label Телефон
+                        input.form-control(type="text")
+                      .form-group
+                        button.btn.btn-primary.btn-block Узнать больше
+          .row.photos
+            .col-sm-3
+              a(href="#")
+                img(src="http://lorempixel.com/200/200/city/1")
+            .col-sm-3
+              a(href="#")
+                img(src="http://lorempixel.com/200/200/city/2")
+            .col-sm-3
+              a(href="#")
+                img(src="http://lorempixel.com/200/200/city/3")
+            .col-sm-3
+              a(href="#")
+                img(src="http://lorempixel.com/200/200/city/4")
+     a.go(href="#more")
+      span.glyphicon.glyphicon-chevron-down
+
+  section#more
+    .container
+      .center-wrap
+        .center
+          .row
+            .col-sm-6
+              h3 15 комнат на 2-4 человека
+              ul
+                li Тихий и безопасный район
+                li Есть туалет, душ, кондиционер, телевизор
+                li Wi-Fi
+                li Общая кухня с кучей холодильников и плит
+                li Парковка
+            .col-sm-6
+              h3 Вы у нас впервые?
+              p Готовы встретить на машине на вокзале или в аэропорту (Ейск, Староминская, Ростов-на-Дону, Краснодар). Расскажем и покажем местность: что что есть и где лучше купаться.
+              h3 Ищете море поглубже?
+              p Поедем вместе на косу Должанскую (40 км от Ейска).
+    a.go(href="#contacts")
+      span.glyphicon.glyphicon-chevron-down
+
+  section#contacts
+    .container
+      .center-wrap
+        .center
+          .row
+            .col-sm-6
+              p Недовольных нашим гостеприимством еще не было.
+              p Те, кто у нас отдыхал летом, готовы нас порекомендовать.
+              p Звоните &mdash; при необходимости дадим контакты предыдущих гостей, пообщаетесь.
+            .col-sm-6
+              iframe(scrolling="no" marginheight="0" marginwidth="0" src="https://maps.google.com/maps/ms?msa=0&msid=207384606404778545895.0004e03636090eccaabc6&ie=UTF8&t=m&ll=46.714679,38.280401&spn=0.020597,0.036478&z=13&output=embed" frameborder="0" height="500px" width="100%")
+    a.go(href="#feedback")
+      span.glyphicon.glyphicon-chevron-down
+
+  section#feedback
+    .container
+      .center-wrap
+        .center
+          .row
+            .col-sm-8.col-sm-offset-2
+              h3 Есть вопросы? Напишите
+              form
+                .row
+                  .col-sm-8.col-sm-offset-2
+                    .form-group
+                      textarea.form-control
+                    .form-group
+                      label Имя
+                      input.form-control(type="text")
+                    .form-group
+                      label E-mail
+                      input.form-control(type="text")
+                    .form-group
+                      button.btn.btn-primary.btn-block Задать вопрос
