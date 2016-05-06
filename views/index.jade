@@ -35,17 +35,17 @@ block content
                 li Комнаты со всеми удобствами и интернетом
             .col-sm-6
                 h3 Хотите получить подробную информацию?
-                form
+                form(method="post" action="/callback")
                   .row
                     .col-sm-8.col-sm-offset-2
                       .form-group
                         label Имя
-                        input.form-control(type="text")
+                        input.form-control(type="text" name="name")
                       .form-group
                         label Телефон
-                        input.form-control(type="text")
+                        input.form-control(type="text" name="phone")
                       .form-group
-                        button.btn.btn-primary.btn-block Узнать больше
+                        button.btn.btn-primary.btn-block(role="submit") Узнать больше
           .row.photos
             .col-sm-3
               a(href="#")
@@ -104,16 +104,16 @@ block content
           .row
             .col-sm-8.col-sm-offset-2
               h3 Есть вопросы? Напишите
-              form
+              form(method="post" action="/feedback")
                 .row
                   .col-sm-8.col-sm-offset-2
                     .form-group
-                      textarea.form-control
+                      textarea.form-control(name="text" rows="5")
                     .form-group
                       label Имя
-                      input.form-control(type="text")
+                      input.form-control(type="text" name="name")
                     .form-group
                       label E-mail
-                      input.form-control(type="text")
+                      input.form-control(type="text" name="mail")
                     .form-group
-                      button.btn.btn-primary.btn-block Задать вопрос
+                      button.btn.btn-primary.btn-block(role="submit") Задать вопрос
