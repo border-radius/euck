@@ -1,6 +1,9 @@
 extends layout
-
 block content
-  h1= message
-  h2= error.status
-  pre #{error.stack}
+  section#feedback
+    .container
+      .center-wrap
+        .center
+          h2= message
+          p
+            a(href="/") Вернуться назад

@@ -12,6 +12,10 @@ router.get('/', function(req, res) {
 });
 
 router.post('/callback', function (req, res, next) {
+  if (!req.body.name || !req.body.phone) {
+    return next(new Error('Не указано имя или телефон.'));
+  }
+
   twilio.sendMessage({
     to: config.twilio.to,
     from: config.twilio.from,
@@ -26,6 +30,10 @@ router.post('/callback', function (req, res, next) {
 });
 
 router.post('/feedback', function (req, res, next) {
+  if (!req.body.name || !req.body.mail || !req.body.text) {
+    return next(new Error('Не указано имя, e-mail или текст сообщения.'));
+  }
+
   transporter.sendMail({
     from: config.nodemailer.from,
     to: config.nodemailer.to,
