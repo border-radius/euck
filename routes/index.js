@@ -3,6 +3,7 @@ var config = require('../config');
 var twilio = require('twilio')(config.twilio.sid, config.twilio.token);
 var nodemailer = require('nodemailer');
 var transporter = nodemailer.createTransport(config.nodemailer.connection);
+var async = require('async');
 
 var router = express.Router();
 
@@ -16,10 +17,12 @@ router.post('/callback', function (req, res, next) {
     return next(new Error('Не указано имя или телефон.'));
   }
 
-  twilio.sendMessage({
-    to: config.twilio.to,
-    from: config.twilio.from,
-    body: 'Заявка с сайта euck.ru. Имя: ' + req.body.name + '. Телефон: ' + req.body.phone
+  async.mapLimit(config.twilio.to, 1, function (to, next) {
+    twilio.sendMessage({
+      to: to,
+      from: config.twilio.from,
+      body: 'Заявка с сайта euck.ru. Имя: ' + req.body.name + '. Телефон: ' + req.body.phone
+    }, next);
   }, function (e) {
     if (e) {
       return next(e);
