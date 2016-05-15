@@ -37,12 +37,14 @@ router.post('/feedback', function (req, res, next) {
     return next(new Error('Не указано имя, e-mail или текст сообщения.'));
   }
 
-  transporter.sendMail({
-    from: config.nodemailer.from,
-    to: config.nodemailer.to,
-    replyTo: req.body.mail,
-    subject: 'Обращение с сайта euck.ru от ' + req.body.name,
-    text: 'Имя: ' + req.body.name + '\nE-mail: ' + req.body.mail + '\n\nТекст обращения:\n' + req.body.text
+  async.mapLimit(config.nodemailer.to, 1, function (to, next) {
+    transporter.sendMail({
+      from: config.nodemailer.from,
+      to: to,
+      replyTo: req.body.mail,
+      subject: 'Обращение с сайта euck.ru от ' + req.body.name,
+      text: 'Имя: ' + req.body.name + '\nE-mail: ' + req.body.mail + '\n\nТекст обращения:\n' + req.body.text
+    }, next);
   }, function (e) {
     if (e) {
       return next(e);
