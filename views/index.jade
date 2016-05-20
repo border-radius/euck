@@ -58,20 +58,11 @@ block content
                       .form-group
                         label
                           input(type="checkbox" required checked)
-                          span  Даю согласие на обработку персональных данных1
-          .row.photos
-            .col-sm-3
-              a(href="/images/1a.jpg" target="_blank")
-                img(src="/images/1t.jpg")
-            .col-sm-3
-              a(href="/images/3a.jpg" target="_blank")
-                img(src="/images/3t.jpg")
-            .col-sm-3
-              a(href="/images/19.jpg" target="_blank")
-                img(src="/images/19t.jpg")
-            .col-sm-3
-              a(href="/images/7a.jpg" target="_blank")
-                img(src="/images/7t.jpg" height="200")
+                          span  Даю согласие на обработку персональных данных
+          .photos
+            - each photo in ['1a', '2a', '3a', '14a', '7a', '8a', '9a', '10a', '11a', '12a', '13a', '15a', '16a', '17a', '18a', '19', '20', '21', '22', '23', '24', '25']
+              a(href="/images/#{photo}.jpg" target="_blank")
+                img(src="/images/#{photo}.jpg" height="300")
      a.go(href="#more")
       span.glyphicon.glyphicon-chevron-down
 
@@ -106,6 +97,13 @@ block content
               p Недовольных нашим гостеприимством еще не было.
               p Те, кто у нас отдыхал летом, готовы нас порекомендовать.
               p Звоните &mdash; при необходимости дадим контакты предыдущих гостей, пообщаетесь.
+              p &nbsp;
+              p
+                a(href="tel:+79615824006") +7 961 582 40 06
+                br
+                a(href="tel:+79181874638") +7 918 187 46 38
+                br
+                a(href="tel:88613235248") 8 861 32 3 52 48
             .col-sm-6
               iframe(scrolling="no" marginheight="0" marginwidth="0"
                src="https://www.google.com/maps/d/embed?mid=1-zegLihYy_btKazT0JYLQeeLHSs&z=15" frameborder="0" height="500px" width="100%")
