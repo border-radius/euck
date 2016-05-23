@@ -58,7 +58,8 @@ block content
                       .form-group
                         label
                           input(type="checkbox" required checked)
-                          span  Даю согласие на обработку персональных данных
+                          span  Даю согласие на 
+                            a(href="/policy") обработку персональных данных
           .photos
             - each photo in ['1a', '2a', '3a', '14a', '7a', '8a', '9a', '10a', '11a', '12a', '13a', '15a', '16a', '17a', '18a', '19', '20', '21', '22', '23', '24', '25']
               a(href="/images/#{photo}.jpg" target="_blank")
@@ -133,4 +134,5 @@ block content
                     .form-group
                       label
                         input(type="checkbox" required checked)
-                        span  Даю согласие на обработку персональных данных
+                        span  Даю согласие на 
+                          a(href="/policy") обработку персональных данных

@@ -12,6 +12,10 @@ router.get('/', function(req, res) {
   res.render('index', { title: 'Express' });
 });
 
+router.get('/policy', function (req, res) {
+  res.render('policy');
+});
+
 router.post('/callback', function (req, res, next) {
   if (!req.body.name || !req.body.phone) {
     return next(new Error('Не указано имя или телефон.'));
