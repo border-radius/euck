@@ -1,17 +1,35 @@
 @import "../../node_modules/bootstrap/less/bootstrap.less";
-@import url(https://fonts.googleapis.com/css?family=Open+Sans:400,300&subset=latin,cyrillic);
+//@import url(https://fonts.googleapis.com/css?family=Open+Sans:400,300&subset=latin,cyrillic);
+@import url(https://fonts.googleapis.com/css?family=Rubik:400,300&subset=latin,cyrillic);
 
 html, body {
   margin: 0;
   height: 100%;
 }
 
+body a, body a:hover {
+  color: #1B7A9F;
+}
+
 body, textarea.form-control, input.form-control, button.btn, label {
-  font: 18px/1.4 'Open Sans', Arial, sans-serif;
+  font: 300 18px/1.4 Rubik, 'Open Sans', Arial, sans-serif;
+  color: #000;
+}
+
+input[type=text], textarea.form-control {
+  border: 1px solid #000;
 }
 
 textarea {
   height: 300px;
+}
+
+label.ch {
+  font-size: 14px;
+
+  input {
+    vertical-align: text-bottom;;
+  }
 }
 
 h1 {
@@ -29,6 +47,20 @@ a {
   color: #00B7FF;
 }
 
+button.btn {
+  background: #1b8da5;
+  color: #fff;
+  font-weight: 400;
+
+  &:hover {
+    background: #1b8da5 - 15%;
+  }
+
+  &:active, &:focus {
+    background: #1b8da5 - 30%;
+  }
+}
+
 .text-center {
   text-align: center;
 }
@@ -41,6 +73,8 @@ a {
   width: 100%;
   height: 100%;
   display: table;
+  position: relative;
+  z-index: 10;
 
   .center {
     display: table-cell;
@@ -51,10 +85,6 @@ a {
 section {
   padding: 35px 0;
   position: relative;
-
-  &, .container {
-    height: 100%;
-  }
 
   .go {
     position: absolute;
@@ -70,6 +100,10 @@ section#header {
   background: url('/images/bg.jpg') no-repeat center center;
   background-size: cover;
 
+  &, .container {
+    height: 100%;
+  }
+
   h1, p, a {
     color: rgba(255, 255, 255, 0.8);
     //color: rgba(50, 73, 86, 0.8);
@@ -81,8 +115,35 @@ section#header {
 }
 
 section#more {
-  background: url('/images/bg3.jpg') no-repeat center center;
-  background-size: cover;
+  padding-bottom: 70px;
+  position: relative;
+  overflow: hidden;
+  //font-weight: 400;
+  color: #fff;
+  //background: url('/images/bg3.jpg') no-repeat center center;
+  //background-size: cover;
+  img {
+    width: 100%;
+    max-width: 1000px;
+  }
+
+  .video {
+    background: #000;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 9;
+
+    video {
+      min-width: 100%;
+      min-height: 100%;
+      position: absolute;;
+      bottom: 0;
+      opacity: 0.7;
+    }
+  }
 }
 
 section#features, section#contacts, section#more, section#feedback {
@@ -94,6 +155,15 @@ section#features, section#contacts, section#more, section#feedback {
 
   .go {
     display: none;
+  }
+
+  ul {
+    list-style-type: none;
+
+    li:before {
+      margin-right: 5px;
+      content: '—';
+    }
   }
 }
 
@@ -115,7 +185,7 @@ section#feedback {
 }
 
 .feature {
-  margin: 35px 0;
+  margin: 50px 0;
   text-align: center;
 
   span {
@@ -123,6 +193,37 @@ section#feedback {
   }
 
   p {
-    margin-top: 20px;
+    margin-top: 10px;
   }
+
+  &.home {
+    color: #651c1c;
+  }
+
+  &.time {
+    color: #307195;
+  }
+
+  &.bed {
+    color: #214d29;
+  }
+
+  .glyphicon-home {
+    margin-left: -3px;
+  }
+}
+
+.callback {
+  padding: 25px 0;
+  border: 2px solid #29c4ed;
+  border-radius: 10px;
+
+  h3 {
+    margin-top: 10px;
+  }
+}
+
+#booking {
+  padding-bottom: 70px;
+  background: #fefdb0 + 50%;
 }

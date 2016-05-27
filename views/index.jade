@@ -29,16 +29,17 @@ block content
         .center
           .row
             .col-sm-6
-              .feature
+              .feature.home
                 span.glyphicon.glyphicon-home
                 p Уютный частный дом с радушными хозяевами
-              .feature
+              .feature.time
                 span.glyphicon.glyphicon-time
                 p 100 метров до моря, 10 минут до городского пляжа
-              .feature
+              .feature.bed
                 span.glyphicon.glyphicon-bed
                 p Комнаты со всеми удобствами и интернетом
             .col-sm-6
+              .callback
                 h3 Хотите получить подробную информацию?
                 p.centered Позвоните нам: 
                   a(href="tel:+79615824006") +79615824006
@@ -56,21 +57,27 @@ block content
                       .form-group
                         button.btn.btn-primary.btn-block(role="submit") Узнать больше
                       .form-group
-                        label
+                        label.ch
                           input(type="checkbox" required checked)
                           span  Даю согласие на 
                             a(href="/policy" target="_blank") обработку персональных данных
-          .photos
-            - each photo in ['1a', '2a', '3a', '14a', '7a', '8a', '9a', '10a', '11a', '12a', '13a', '15a', '16a', '17a', '18a', '19', '20', '21', '22', '23', '24', '25']
-              a(href="/images/#{photo}.jpg" target="_blank")
-                img(src="/images/#{photo}.jpg" height="300")
-     a.go(href="#more")
-      span.glyphicon.glyphicon-chevron-down
-
+  section#photos
+    .photos
+      - each photo in ['1a', '2a', '3a', '14a', '7a', '8a', '9a', '10a', '11a', '12a', '13a', '15a', '16a', '17a', '18a', '19', '20', '21', '22', '23', '24', '25']
+        a(href="/images/#{photo}.jpg" target="_blank")
+          img(src="/images/#{photo}.jpg" height="300")
   section#more
+    .video
+      video(preload autoplay loop muted)
+        source(type="video/webm" src="/lake.webm")
+        source(type="video/mp4" src="/lake.mp4")
     .container
       .center-wrap
         .center
+          .row
+            .col-sm-12
+              p.centered
+                img(src="/images/features.png")
           .row
             .col-sm-6
               h3 10 комнат на 2-4 человека
@@ -110,29 +117,40 @@ block content
                src="https://www.google.com/maps/d/embed?mid=1-zegLihYy_btKazT0JYLQeeLHSs&z=15" frameborder="0" height="500px" width="100%")
     a.go(href="#feedback")
       span.glyphicon.glyphicon-chevron-down
+      
+  section#booking
+    .container
+      .row
+        .col-sm-8.col-sm-offset-2
+          h3 Бронирование
+          p Для чего нужно бронировать, плюсы и минусы бронирования.
+          p Для того, что бы мы смогли Вас встретить и поселить, Вам будет необходимо оплатить бронь номера в размере 1000 рублей (которая учтется при заселении) на карту Сбербанка. Для чего? Для того, что бы мы зарезервировали номер за Вами на указанные даты проживания и фиксации оговоренной цены. Если этого не сделать, то приоритет в заселении будет иметь человек заранее оплативший бронь или просто заселившийся с улицы первым по рыночной цене сложившейся на день заселения. Для справки, понижения цены еще ни разу не было со времен правления Л. И. Брежнева. Дело в том, что довольно часто люди резервируют места у нас, но у нас не появляются, хотя нам приходится отказывать потенциальным постояльцам в заселении. Что это: проявление конкуренции или недобросовестность отдыхающих &mdash; не очень хочется разбираться. Чтобы избежать этого мы вынужденны ввести платную бронь для тех, кто приезжает к нам впервые. Если Вы захотите повторно поселится у нас, то нам будет достаточно простого уведомления от Вас, потому что для нас вы становитесь постоянным клиентом.
+          p Люди вполне обоснованно опасаются мошенничества, и мы это понимаем, поэтому мы готовы по запросу выслать вам на почту сканы паспорта с регистрацией и небольшим редактированием для невозможности использования сканов в других целях. Мы неготовы пожертвовать жилищем в обмен за возможное приобретение вашей кровной тысячи рублей. Надеюсь вы это тоже понимаете.
+          p Для наглядности бронирования Вы можете посмотреть график заселения с забронированными номерами на сегодняшний день. График обновляется по мере бронирования номеров.
+          p &nbsp;
+          p.centered
+            img(src="/images/booking.png")
 
   section#feedback
     .container
-      .center-wrap
-        .center
-          .row
-            .col-sm-8.col-sm-offset-2
-              h3 Есть вопросы? Напишите
-              form(method="post" action="/feedback" onsubmit="(yaCounter37298945 && yaCounter37298945.reachGoal('feedback')); return true")
-                .row
-                  .col-sm-8.col-sm-offset-2
-                    .form-group
-                      textarea.form-control(name="text" rows="5" required)
-                    .form-group
-                      label Имя
-                      input.form-control(type="text" name="name" required)
-                    .form-group
-                      label E-mail
-                      input.form-control(type="text" name="mail" required)
-                    .form-group
-                      button.btn.btn-primary.btn-block(role="submit") Задать вопрос
-                    .form-group
-                      label
-                        input(type="checkbox" required checked)
-                        span  Даю согласие на 
-                          a(href="/policy" target="_blank") обработку персональных данных
+      .row
+        .col-sm-8.col-sm-offset-2
+          h3 Есть вопросы? Напишите
+          form(method="post" action="/feedback" onsubmit="(yaCounter37298945 && yaCounter37298945.reachGoal('feedback')); return true")
+            .row
+              .col-sm-8.col-sm-offset-2
+                .form-group
+                  textarea.form-control(name="text" rows="5" required)
+                .form-group
+                  label Имя
+                  input.form-control(type="text" name="name" required)
+                .form-group
+                  label E-mail
+                  input.form-control(type="text" name="mail" required)
+                .form-group
+                  button.btn.btn-primary.btn-block(role="submit") Задать вопрос
+                .form-group
+                  label.ch
+                    input(type="checkbox" required checked)
+                    span  Даю согласие на 
+                      a(href="/policy" target="_blank") обработку персональных данных
