@@ -4,12 +4,11 @@ var twilio = require('twilio')(config.twilio.sid, config.twilio.token);
 var nodemailer = require('nodemailer');
 var transporter = nodemailer.createTransport(config.nodemailer.connection);
 var async = require('async');
-
 var router = express.Router();
 
 /* GET home page. */
 router.get('/', function(req, res) {
-  res.render('index', { title: 'Express' });
+  res.render('index', { title: 'Express', time: new Date().getTime() });
 });
 
 router.get('/policy', function (req, res) {
@@ -58,5 +57,6 @@ router.post('/feedback', function (req, res, next) {
   });
 });
 
+router.use('/booking', require('./booking'));
 
 module.exports = router;
