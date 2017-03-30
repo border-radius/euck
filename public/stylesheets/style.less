@@ -96,6 +96,7 @@ section {
 }
 
 section#header {
+  padding-top: 125px;
   //#gradient.vertical(rgba(255, 225, 0, 0.51), rgba(75, 211, 234, 0.48));
   background: url('/images/bg.jpg') no-repeat center center;
   background-size: cover;
@@ -229,5 +230,31 @@ section#feedback {
 
   p {
     margin: 25px 0;
+  }
+}
+
+section#menu {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+
+  ul {
+    padding: 0;
+    list-style-type: none;
+
+    li {
+      width: 20%;
+      display: inline-block;
+      text-align: center;
+      word-wrap: break-word;
+      vertical-align: top;
+
+      a {
+        color: #9FD5EA;
+        text-decoration: underline;
+      }
+    }
   }
 }
