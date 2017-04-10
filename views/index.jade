@@ -152,7 +152,15 @@ block content
   section
     .container
       .row
-        .col-sm8.com-sm-offset-2
+        .col-sm-8.col-sm-offset-2
+          div
+            script(type="text/javascript" src="//vk.com/js/api/openapi.js?143")
+            #vk_community_messages
+            script(type="text/javascript")
+              | VK.Widgets.CommunityMessages("vk_community_messages", 124372901, {expandTimeout: "15000",tooltipButtonText: "Есть вопрос?"});
+
+      .row
+        .col-sm-9.col-sm-offset-1
           #disqus_thread
           script
             | var disqus_config = function () {
