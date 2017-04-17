@@ -1,0 +1,11 @@
+User-agent: *
+Allow: /images/
+Disallow: /javascripts/
+Disallow: /stylesheets/
+User-agent: Googlebot
+Allow: /
+User-agent: Yandex
+Allow: /images/
+Disallow: /javascripts/
+Disallow: /stylesheets/
+Host: euck.ru
