@@ -40,6 +40,10 @@ router.post('/feedback', function (req, res, next) {
     return next(new Error('Не указано имя, e-mail или текст сообщения.'));
   }
 
+  if (/@\d+\.com$/i.test(req.body.mail)) {
+    return res.render('thanks-mail')
+  }
+
   async.mapLimit(config.nodemailer.to, 1, function (to, next) {
     transporter.sendMail({
       from: config.nodemailer.from,
