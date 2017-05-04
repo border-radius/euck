@@ -40,7 +40,7 @@ router.post('/feedback', function (req, res, next) {
     return next(new Error('Не указано имя, e-mail или текст сообщения.'));
   }
 
-  if (/@\d+\.com$/i.test(req.body.mail)) {
+  if (/@\d+\.(com|ru)$/i.test(req.body.mail)) {
     return res.render('thanks-mail')
   }
 
