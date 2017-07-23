@@ -47,7 +47,7 @@ router.post('/feedback', function (req, res, next) {
     return next(new Error('Не указано имя, e-mail или текст сообщения.'));
   }
 
-  recaptcha.verify(req, e => {
+  recaptcha.verify(req, function (e) {
     if (e) {
       return res.render('error', {
         message: 'Кажется, вы робот или забыли нажать кнопку "Я не робот"'
