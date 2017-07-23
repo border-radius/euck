@@ -5,10 +5,17 @@ var nodemailer = require('nodemailer');
 var transporter = nodemailer.createTransport(config.nodemailer.connection);
 var async = require('async');
 var router = express.Router();
+var recaptcha = require('express-recaptcha');
+
+recaptcha.init(config.recaptcha.site_key, config.recaptcha.secret_key);
 
 /* GET home page. */
 router.get('/', function(req, res) {
-  res.render('index', { title: 'Express', time: new Date().getTime() });
+  res.render('index', {
+    title: 'Express',
+    time: new Date().getTime(),
+    captcha: recaptcha.render()
+  });
 });
 
 router.get('/policy', function (req, res) {
@@ -40,27 +47,29 @@ router.post('/feedback', function (req, res, next) {
     return next(new Error('Не указано имя, e-mail или текст сообщения.'));
   }
 
-  if (!/@[A-z]+\.(com|ru)$/i.test(req.body.mail)) {
-    return setTimeout(function () {
-      return res.render('thanks-mail')
-    }, 9000)
-  }
-
-  async.mapLimit(config.nodemailer.to, 1, function (to, next) {
-    transporter.sendMail({
-      from: config.nodemailer.from,
-      to: to,
-      replyTo: req.body.mail,
-      subject: 'Обращение с сайта euck.ru от ' + req.body.name,
-      text: 'Имя: ' + req.body.name + '\nE-mail: ' + req.body.mail + '\n\nТекст обращения:\n' + req.body.text
-    }, next);
-  }, function (e) {
+  recaptcha.verify(req, e => {
     if (e) {
-      return next(e);
+      return res.render('error', {
+        message: 'Кажется, вы робот или забыли нажать кнопку "Я не робот"'
+      })
     }
 
-    res.render('thanks-mail');
-  });
+    async.mapLimit(config.nodemailer.to, 1, function (to, next) {
+      transporter.sendMail({
+        from: config.nodemailer.from,
+        to: to,
+        replyTo: req.body.mail,
+        subject: 'Обращение с сайта euck.ru от ' + req.body.name,
+        text: 'Имя: ' + req.body.name + '\nE-mail: ' + req.body.mail + '\n\nТекст обращения:\n' + req.body.text
+      }, next);
+    }, function (e) {
+      if (e) {
+        return next(e);
+      }
+
+      res.render('thanks-mail');
+    });
+  })
 });
 
 router.use('/booking', require('./booking'));
