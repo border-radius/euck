@@ -18,11 +18,11 @@ app.post('/callback', (req, res) => {
 
     res.send('OK');
 
-    if (!req.body.name || !req.body.phone) {
+    if (!req.body.Name || !req.body.Phone) {
         console.log('! no name or phone');
     }
     
-    const msg = 'Новая заявка.\nИмя: ' + req.body.name + '\nТелефон:\n`' + req.body.phone + '`';
+    const msg = 'Новая заявка.\nИмя: ' + req.body.Name + '\nТелефон:\n`' + req.body.Phone + '`';
     
     console.log(msg);
     
