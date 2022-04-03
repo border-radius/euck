@@ -13,15 +13,22 @@ app.get('/', (req, res) => {
 });
 
 app.post('/callback', (req, res) => {
+    console.log('---');
+    console.log(req.body);
+
+    if (!req.body.name || !req.body.phone) {
+        console.log('! no name or phone');
+        return new Error('no name or phone');
+    }
+    
     const msg = 'Новая заявка.\nИмя: ' + req.body.name + '\nТелефон:\n`' + req.body.phone + '`';
     
-    console.log('---');
     console.log(msg);
     
     axios(config.tg + msg).then(function (resp) {
         console.log(resp);
     }).catch(function (err) {
-        console.log(err);
+        console.log(err && err.message);
     });
 });
 
