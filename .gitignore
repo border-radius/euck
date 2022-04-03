@@ -3,3 +3,4 @@ config.json
 npm-debug.log
 public/stylesheets/*.css
 public/images/booking.png
+package-lock.json
