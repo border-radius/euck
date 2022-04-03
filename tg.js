@@ -16,9 +16,10 @@ app.post('/callback', (req, res) => {
     console.log('---');
     console.log(req.body);
 
+    res.send('OK');
+
     if (!req.body.name || !req.body.phone) {
         console.log('! no name or phone');
-        return new Error('no name or phone');
     }
     
     const msg = 'Новая заявка.\nИмя: ' + req.body.name + '\nТелефон:\n`' + req.body.phone + '`';
