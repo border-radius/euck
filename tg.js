@@ -26,7 +26,7 @@ app.post('/callback', (req, res) => {
     
     console.log(msg);
     
-    axios(config.tg + msg).then(function (resp) {
+    axios(config.tg + encodeURIComponent(msg)).then(function (resp) {
         console.log(resp);
     }).catch(function (err) {
         console.log(err && err.message);
